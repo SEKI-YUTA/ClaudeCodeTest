@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .counter {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Counter</h1>
+    
+    <div class="counter" id="counter">0</div>
+    
+    <button id="incrementBtn">Increase by 1</button>
+    
+    <div style="margin: 20px 0;">
+        <input type="number" id="userInput" value="1" min="1">
+        <button id="userIncrementBtn">Increase by Value</button>
+    </div>
+    
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        let count = 0;
+        const counterDisplay = document.getElementById('counter');
+        const incrementBtn = document.getElementById('incrementBtn');
+        const userInput = document.getElementById('userInput');
+        const userIncrementBtn = document.getElementById('userIncrementBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        
+        function updateDisplay() {
+            counterDisplay.textContent = count;
+        }
+        
+        incrementBtn.addEventListener('click', () => {
+            count += 1;
+            updateDisplay();
+        });
+        
+        userIncrementBtn.addEventListener('click', () => {
+            const value = parseInt(userInput.value);
+            if (!isNaN(value)) {
+                count += value;
+                updateDisplay();
+            }
+        });
+        
+        resetBtn.addEventListener('click', () => {
+            count = 0;
+            updateDisplay();
+        });
+    </script>
+</body>
+</html>
